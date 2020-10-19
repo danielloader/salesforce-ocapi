@@ -1,0 +1,22 @@
+{
+    "python.formatting.provider": "black",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "restructuredtext.linter.executablePath": "${workspaceFolder}/.venv/bin/rstcheck",
+    "restructuredtext.sphinxBuildPath": "${workspaceFolder}/.venv/bin/sphinx-build",
+    "restructuredtext.updateDelay": 1000,
+    "restructuredtext.updateOnTextChanged": "true",
+    "restructuredtext.preview.scrollEditorWithPreview": false,
+    "restructuredtext.preview.scrollPreviewWithEditor": false,
+    "restructuredtext.languageServer.disabled": false,
+    "restructuredtext.linter.extraArgs": [
+        "--ignore D001",
+        "--max-line-length 200"
+    ],
+    "python.pythonPath": ".venv/bin/python",
+    "autoDocstring.docstringFormat": "google",
+    "autoDocstring.includeExtendedSummary": true,
+    "restructuredtext.confPath": "${workspaceFolder}/docs/source",
+    "restructuredtext.builtDocumentationPath": "${workspaceFolder}/docs/_build/html"
+}

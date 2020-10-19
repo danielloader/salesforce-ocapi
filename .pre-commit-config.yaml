@@ -1,0 +1,23 @@
+files: '^salesforce_ocapi'
+exclude: '^salesforce_ocapi/docs/source/modules/'
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+-   repo: https://github.com/psf/black
+    rev: 19.10b0
+    hooks:
+    -   id: black
+-   repo: https://github.com/timothycrosley/isort 
+    rev: 5.1.4
+    hooks:
+    -   id: isort
+-   repo:  https://github.com/Yelp/detect-secrets
+    rev: v0.14.3
+    hooks:
+    -   id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: .*/tests/.*
