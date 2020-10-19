@@ -14,8 +14,6 @@ from webdav3.exceptions import ConnectionException, NoConnection, WebDavExceptio
 class WebDAV:
     """Commerce Cloud WebDAV session.
 
-    [extended_summary]
-
     Args:
         client (CommerceCloudClientSession): Active client session with Commerce Cloud for a bearer token.
         instance (str, optional): Optional commerce cloud instance, useful for opening clients to multiple instances using the same bearer token. Defaults to None.

@@ -9,8 +9,6 @@ from salesforce_ocapi.utils import Endpoint
 class GlobalJobs(Endpoint):
     """GlobalJobs
 
-    [extended_summary]
-
     Args:
         client (CommerceCloudBMToken): Business Manager authenticated session token.
         instance ([type], optional): Override the instance set in the client session. Defaults to None.
