@@ -72,7 +72,5 @@ class JobExecutionSearch(Endpoint):
             Response: HTTPX response object.
         """
         url = f"{self.instance}/s/{self.site}/dw/data/v20_4/{self.base}"
-        print(type(body))
-        print(body)
         return Endpoint.POST(self, url, body, headers=headers, idempotent=True)
 
