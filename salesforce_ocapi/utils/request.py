@@ -139,7 +139,7 @@ class Request:
         self.InjectAttrs(headers=headers)
         try:
             response = self.session.post(
-                url, data=body, params=params, headers=self.headers
+                url, body=body, params=params, headers=self.headers
             )
             return response
         except _exceptions.TimeoutException:
