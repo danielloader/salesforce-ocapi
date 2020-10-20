@@ -4,7 +4,7 @@ from httpcore import _exceptions
 from httpx import Client, Response
 from opnieuw import RetryException, retry
 
-from salesforce_ocapi.utils.decorators import basicauth, contenttype
+from salesforce_ocapi.utils.decorators import basicauth
 from salesforce_ocapi.utils.exceptions import IdempotentTimeout
 
 
@@ -55,7 +55,6 @@ class Request:
         max_calls_total=3,
         retry_window_after_first_call_in_seconds=10,
     )
-    @contenttype
     @basicauth
     def PATCH(
         self, url: str, body=None, headers: dict = {}, idempotent: bool = False,
@@ -73,12 +72,12 @@ class Request:
         """
         self.InjectAttrs(headers=headers)
         try:
-            response = self.session.patch(url, data=body, headers=self.headers)
+            response = self.session.patch(url, json=body, headers=self.headers)
             return response
         except _exceptions.TimeoutException:
             if idempotent is False:
                 raise IdempotentTimeout(
-                    method="PATCH", url=url, data=body, headers=self.headers
+                    method="PATCH", url=url, json=body, headers=self.headers
                 )
             else:
                 print("retry")
@@ -89,7 +88,6 @@ class Request:
         max_calls_total=3,
         retry_window_after_first_call_in_seconds=10,
     )
-    @contenttype
     @basicauth
     def PUT(self, url: str, body: dict = {}, headers: dict = {}) -> Response:
         """HTTP PUT Request
@@ -104,7 +102,7 @@ class Request:
         """
         self.InjectAttrs(headers=headers)
         try:
-            response = self.session.put(url, data=body, headers=self.headers)
+            response = self.session.put(url, json=body, headers=self.headers)
             return response
         except _exceptions.TimeoutException:
             raise RetryException
@@ -114,7 +112,6 @@ class Request:
         max_calls_total=3,
         retry_window_after_first_call_in_seconds=10,
     )
-    @contenttype
     @basicauth
     def POST(
         self,
@@ -139,13 +136,13 @@ class Request:
         self.InjectAttrs(headers=headers)
         try:
             response = self.session.post(
-                url, body=body, params=params, headers=self.headers
+                url, json=body, params=params, headers=self.headers
             )
             return response
         except _exceptions.TimeoutException:
             if idempotent is False:
                 raise IdempotentTimeout(
-                    method="POST", url=url, body=body, headers=self.headers
+                    method="POST", url=url, json=body, headers=self.headers
                 )
             else:
                 print("retry")
@@ -156,7 +153,6 @@ class Request:
         max_calls_total=3,
         retry_window_after_first_call_in_seconds=10,
     )
-    @contenttype
     @basicauth
     def DELETE(self, url: str, body: dict = {}, headers: dict = {}) -> Response:
         """HTTP DELETE Request
