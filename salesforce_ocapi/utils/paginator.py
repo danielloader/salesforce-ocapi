@@ -68,8 +68,8 @@ class Paginator:
                 pass
         response = self._method(params=params, *args, **kwargs)
         r = response.json()
-        if len(r.get("hits", [])) == 0:
-            yield response
+        if r.get("total") == 0:
+            yield r
             self.pbar.close()
             return
         self.pbar.total = r["total"]
@@ -138,3 +138,4 @@ class Paginator:
             if result.get("hits"):
                 for _ in result["hits"]:
                     yield _
+     
