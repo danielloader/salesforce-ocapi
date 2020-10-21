@@ -24,13 +24,10 @@ class JobExecutionSearch(Endpoint):
 
     def GetJobExecution(self, body: dict, headers: dict = None, **kwargs) -> Response:
         """Get job execution by Job ID.
-
         [extended_summary]
-
         Args:
             body (dict): Dictionary for the POST request body.
             headers (dict, optional): Key value pairs for headers added to request. Defaults to None.
-
         Returns:
             Response: HTTPX response object.
         """
