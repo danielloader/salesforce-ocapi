@@ -8,8 +8,6 @@ def contenttype(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         if "body" in kwargs:
-            print(type(body))
-            print(body)
             if type(kwargs["body"]) is str:
                 if kwargs["body"].startswith("<"):
                     kwargs["headers"].update({"Content-Type": "application/xml"})
