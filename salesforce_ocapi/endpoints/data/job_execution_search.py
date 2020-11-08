@@ -22,9 +22,8 @@ class JobExecutionSearch(Endpoint):
     def __repr__(self):
         return self.__class__.__name__
 
-    def GetJobExecution(self, body: dict, headers: dict = None, **kwargs) -> Response:
-        """Get job execution by Job ID.
-        [extended_summary]
+    def SearchJobs(self, body: dict, headers: dict = None, **kwargs) -> Response:
+        """ Search Job executions
         Args:
             body (dict): Dictionary for the POST request body.
             headers (dict, optional): Key value pairs for headers added to request. Defaults to None.
