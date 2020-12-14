@@ -1,0 +1,7 @@
+{
+    "image": "nikolaik/python-nodejs:python3.8-nodejs14",
+    "forwardPorts": [],
+    "postCreateCommand": "poetry install",
+    "extensions": ["ms-python.python"],
+    "runArgs": ["--env-file",".devcontainer/devcontainer.env"]
+  }
