@@ -42,7 +42,6 @@ class BaseToken:
         }
 
         response = self.session.post(url, headers=headers, data=payload, auth=auth,)
-        print(auth, response.text)
         token = response.json()
         try:
             assert response.status_code == 200
